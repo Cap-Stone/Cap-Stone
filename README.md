@@ -16,7 +16,7 @@ Then in a different terminal window to run UI (http://localhost:4200/):
 ng serve --proxy-config proxy.conf.json
 
 # Requirements
-- Node.js
+- Node.js - https://nodejs.org/en/
 - Express
-- Angular
+- Angular - (run follow command in terminal) npm install @angular/cli -g
 - Mongoose
