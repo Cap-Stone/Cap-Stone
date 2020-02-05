@@ -24,5 +24,9 @@ export class AppComponent {
     )
   }
 
+  settings() {
+    console.log('Settings option has been clicked');
+  }
+
   title = 'ui';
 }
