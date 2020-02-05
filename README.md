@@ -14,3 +14,9 @@ node server.js
 
 Then in a different terminal window to run UI (http://localhost:4200/):
 ng serve --proxy-config proxy.conf.json
+
+# Requirements
+- Node.js
+- Express
+- Angular
+- Mongoose
