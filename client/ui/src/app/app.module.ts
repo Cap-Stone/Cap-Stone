@@ -39,9 +39,13 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
+
+import { DisplayModule } from './pages/display/display.module';
+import { MapModule } from './components/map/map.module';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,9 +82,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
-
-    
+    MatPaginatorModule,
+    DisplayModule,
+    MapModule
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent]
