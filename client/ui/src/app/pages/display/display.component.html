@@ -1,1 +1,2 @@
-<app-map></app-map>
+<app-map  [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel" 
+(mapLoadedEvent)="mapLoadedEvent($event)"></app-map>
