@@ -83,10 +83,16 @@ export class MapComponent implements OnInit {
 
       this._view = new EsriMapView(mapViewProperties);
       await this._view.when();
-      return this._view;
+      return this._view; 
     } catch (error) {
       console.log("EsriLoader: ", error);
     }
+  }
+
+  getCoord(ev: any) {
+    console.log('X: ', ev.layerX);
+    console.log('Y: ', ev.layerY);
+    console.log('Clicked', ev);
   }
 
   ngOnInit() {
