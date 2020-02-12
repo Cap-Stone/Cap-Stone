@@ -11,7 +11,7 @@ export class DisplayComponent implements OnInit {
 
   mapCenter = [-97.396378, 27.800583];
   basemapType = 'hybrid';
-  mapZoomLevel = 12;
+  mapZoomLevel = 10;
 
   // See map.component.ts
   mapLoadedEvent(status: boolean) {
