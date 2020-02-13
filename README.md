@@ -18,5 +18,6 @@ ng serve --proxy-config proxy.conf.json
 # Requirements
 - Node.js - https://nodejs.org/en/
 - Express
-- Angular - (run follow command in terminal) npm install @angular/cli -g
+- Angular - (run follow command in terminal under ui directory) npm install @angular/cli -g
+- Angular Material - (run follow command in terminal under ui directory) ng add @angular/material
 - Mongoose
