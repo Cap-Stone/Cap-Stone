@@ -46,6 +46,8 @@ import { HomeModule } from './pages/home/home.module';
 import { StatisticsModule } from './pages/statistics/statistics.module';
 import { OnBoardingModule } from './pages/on-boarding/on-boarding.module';
 import { AboutModule } from './pages/about/about.module';
+import { LoginModule } from './pages/login/login.module';
+
 
 @NgModule({
   declarations: [
@@ -93,6 +95,7 @@ import { AboutModule } from './pages/about/about.module';
     StatisticsModule,
     OnBoardingModule,
     AboutModule,
+    LoginModule
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent]

@@ -8,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class DisplayComponent implements OnInit {
 
   constructor() { }
-
+  
+  // Corpus Christi Coordinates and map type/zoom
   mapCenter = [-97.396378, 27.800583];
-  basemapType = 'hybrid';
+  basemapType = 'streets';
   mapZoomLevel = 10;
 
-  // See map.component.ts
+  // Checks the status of the map
   mapLoadedEvent(status: boolean) {
     console.log('The map loaded: ' + status);
   }
