@@ -19,9 +19,9 @@ export class MapComponent implements OnInit {
    * _basemap sets type of map
    * _loaded provides map loaded status
    */
-  private _zoom = 10;
-  private _center: Array<number> = [0.1278, 51.5074];
-  private _basemap = "streets";
+  private _zoom: any;
+  private _center: any;
+  private _basemap: any;
   private _loaded = false;
   private _view: any = null;
 
