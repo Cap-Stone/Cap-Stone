@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StatisticsComponent } from './statistics.component';
+import { LoginComponent } from './login.component';
 
-// Angular Material 
+// Angular Material
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 
+
 @NgModule({
-  declarations: [StatisticsComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     AngularMaterialModule
   ]
 })
-export class StatisticsModule { }
+export class LoginModule { }
