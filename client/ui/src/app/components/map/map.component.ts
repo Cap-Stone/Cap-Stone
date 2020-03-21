@@ -61,9 +61,11 @@ export class MapComponent implements OnInit {
   async initializeMap() {
     try {
       // Load the modules for the ArcGIS API for JavaScript
-      const [EsriMap, EsriMapView] = await loadModules([
+      const [EsriMap, EsriMapView, View, BasemapToggle] = await loadModules([
         "esri/Map",
-        "esri/views/MapView"
+        "esri/views/MapView",
+        "esri/views/View",
+        "esri/widgets/BasemapToggle"
       ]);
 
       // Configure the Map
@@ -82,6 +84,13 @@ export class MapComponent implements OnInit {
       };
 
       this._view = new EsriMapView(mapViewProperties);
+
+      const toggle = new BasemapToggle({
+        view: this._view
+      });
+
+      this._view.ui.add(toggle, "top-right");
+
       await this._view.when();
       return this._view; 
     } catch (error) {
