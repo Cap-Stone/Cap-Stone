@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, Input, Output, EventEmitter, ElementRef } from "@angular/core";
 import { loadModules } from 'esri-loader';
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -112,6 +111,11 @@ export class MapComponent implements OnInit {
       this._loaded = this._view.ready;
       this.mapLoadedEvent.emit(true);
     });
+  }
+
+  // Recalls the initialeMap function to display new basemap
+  ngOnChanges() {
+    this.initializeMap();
   }
 
   ngOnDestroy() {

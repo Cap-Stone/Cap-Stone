@@ -1,2 +1,18 @@
-<app-map  [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel" 
-(mapLoadedEvent)="mapLoadedEvent($event)"></app-map>
+<app-map [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel" (mapLoadedEvent)="mapLoadedEvent($event)">
+</app-map>
+<div>
+  <mat-grid-list cols="4" rowHeight="80px">
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" style="background: green;" (click)="hybrid();">Hybrid</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" (click)="SNV();">Streets-Navigation-Vector</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" style="background: gray;" (click)="darkGray();">Dark Grey</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" style="background: lightblue;" (click)="terrain();">Terrain</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
