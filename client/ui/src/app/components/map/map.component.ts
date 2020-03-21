@@ -82,6 +82,7 @@ export class MapComponent implements OnInit {
         map: map
       };
 
+      // View being Initialized
       this._view = new EsriMapView(mapViewProperties);
 
       const toggle = new BasemapToggle({
@@ -90,7 +91,7 @@ export class MapComponent implements OnInit {
 
       this._view.ui.add(toggle, "top-right");
 
-      await this._view.when();
+      await this._view.when(); // View is being 
       return this._view; 
     } catch (error) {
       console.log("EsriLoader: ", error);
