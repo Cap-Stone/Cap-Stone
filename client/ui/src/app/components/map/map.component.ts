@@ -1,5 +1,16 @@
-import { Component, OnInit, OnDestroy, ViewChild, Input, Output, EventEmitter, ElementRef } from "@angular/core";
-import { loadModules } from 'esri-loader';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  Input,
+  Output,
+  EventEmitter,
+  ElementRef
+} from "@angular/core";
+import {
+  loadModules
+} from 'esri-loader';
 
 @Component({
   selector: 'app-map',
@@ -7,10 +18,12 @@ import { loadModules } from 'esri-loader';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  @Output() mapLoadedEvent = new EventEmitter<boolean>();
+  @Output() mapLoadedEvent = new EventEmitter < boolean > ();
 
   // The <div> where we will place the map
-  @ViewChild("mapViewNode", { static: true }) private mapViewEl: ElementRef;
+  @ViewChild("mapViewNode", {
+    static: true
+  }) private mapViewEl: ElementRef;
 
   /**
    * _zoom sets map zoom
@@ -18,11 +31,12 @@ export class MapComponent implements OnInit {
    * _basemap sets type of map
    * _loaded provides map loaded status
    */
-  private _zoom: any;
-  private _center: any;
-  private _basemap: any;
-  private _loaded = false;
-  private _view: any = null;
+  _zoom: any;
+  _center: any;
+  _basemap: any;
+  _loaded = false;
+  _view: any = null;
+  locatorTask: any;
 
   get mapLoaded(): boolean {
     return this._loaded;
@@ -38,11 +52,11 @@ export class MapComponent implements OnInit {
   }
 
   @Input()
-  set center(center: Array<number>) {
+  set center(center: Array < number > ) {
     this._center = center;
   }
 
-  get center(): Array<number> {
+  get center(): Array < number > {
     return this._center;
   }
 
@@ -60,12 +74,21 @@ export class MapComponent implements OnInit {
   async initializeMap() {
     try {
       // Load the modules for the ArcGIS API for JavaScript
-      const [EsriMap, EsriMapView, View, BasemapToggle] = await loadModules([
+      const [EsriMap, EsriMapView, View, BasemapToggle, Locator, Editor] = await loadModules([
         "esri/Map",
         "esri/views/MapView",
         "esri/views/View",
-        "esri/widgets/BasemapToggle"
+        "esri/widgets/BasemapToggle",
+        "esri/tasks/Locator",
+        "esri/widgets/Editor",
       ]);
+
+      // Create a locator task using the world geocoding service
+      this.locatorTask = new Locator({
+        url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+      });
+
+      console.log('LOCATOR: ', this.locatorTask);
 
       // Configure the Map
       const mapProperties: any = {
@@ -85,23 +108,59 @@ export class MapComponent implements OnInit {
       // View being Initialized
       this._view = new EsriMapView(mapViewProperties);
 
-      const toggle = new BasemapToggle({
+      // const toggle = new BasemapToggle({
+      //   view: this._view
+      // });
+
+      // this._view.ui.add(toggle, "top-right");
+
+      var editor = new Editor({
         view: this._view
       });
 
-      this._view.ui.add(toggle, "top-right");
+      console.log('EDITOR: ', editor);
+      
+      this._view.ui.add(editor, "top-right");
 
       await this._view.when(); // View is being 
-      return this._view; 
+      return this._view;
     } catch (error) {
       console.log("EsriLoader: ", error);
     }
   }
 
   getCoord(ev: any) {
-    console.log('X: ', ev.layerX);
-    console.log('Y: ', ev.layerY);
-    console.log('Clicked', ev);
+    // console.log('X: ', ev.layerX);
+    // console.log('Y: ', ev.layerY);
+    console.log('Clicked: ', ev);
+    // Get the coordinates of the click on the view
+    // around the decimals to 3 decimals
+    var lat = ev.x;
+    var lon = ev.y;
+
+    console.log('LAT: ', lat);
+    console.log('LON: ', lon);
+
+    this._view.popup.open({
+      // Set the popup's title to the coordinates of the clicked location
+      title: "Reverse geocode: [" + lon + ", " + lat + "]",
+      location: ev // Set the location of the popup to the clicked location
+    });
+
+    var params = {
+      location: ev
+    };
+
+    console.log('PARAMS: ', params);
+    
+    // Execute a reverse geocode using the clicked location
+    this.locatorTask.locationToAddress(params).then(function(response) {
+        // If an address is successfully found, show it in the popup's content
+        this._view.popup.content = response.address;
+      }).catch(function(error) {
+        // If the promise fails and no result is found, show a generic message
+        this._view.popup.content = "No address was found for this location";
+      });
   }
 
   ngOnInit() {
