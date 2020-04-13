@@ -1,16 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { MatInputModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
+
 import { LoginComponent } from './login.component';
 
-// Angular Material
-import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
-
-
 @NgModule({
-  declarations: [LoginComponent],
   imports: [
     CommonModule,
-    AngularMaterialModule
-  ]
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule
+  ],
+  declarations: [LoginComponent],
+  exports: [LoginComponent]
 })
-export class LoginModule { }
+export class LoginModule {}
