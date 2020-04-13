@@ -20,4 +20,5 @@ ng serve --proxy-config proxy.conf.json
 - Express
 - Angular - (run follow command in terminal under ui directory) npm install @angular/cli -g
 - Angular Material - (run follow command in terminal under ui directory) ng add @angular/material
-- Mongoose
+- Mongoose - npm install mongoose
+- MongoDb - To Log in into MongoDb Cloud https://cloud.mongodb.com/v2/5e94b2b24f58b26bde5d511e#clusters/connect?clusterId=DatabaseBenchMark  - Username: benchmarkmapper2020@gmail.com    Password: 2020Benchmark
