@@ -13,4 +13,8 @@ export class DataServiceService {
   testServer() {
     return this.http.get('http://localhost:3000/test/');
   }
+
+  getUserDetail(){
+    //post these details to API server return user info if correct.
+  }
 }

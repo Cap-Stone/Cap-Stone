@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
-
+const mongoose = require('mongoose');
 // Add headers
 app.use(function (req, res, next) {
 
@@ -44,3 +44,14 @@ app.set('port', port);
 const server = http.createServer(app);
 
 server.listen(port, () => console.log(`Running on localhost:${port}`));
+
+
+mongoose.connect('mongodb+srv://admin:admin@databasebenchmark-ga1yr.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true , useUnifiedTopology: true});
+const connection = mongoose.connection;
+connection.on('error', (error) => {
+  console.log('Error connecting to MongoDB', error);
+});
+
+connection.once('open', () => {
+  console.log('Connected to MongoDB');
+});
