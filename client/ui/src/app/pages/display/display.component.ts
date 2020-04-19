@@ -11,7 +11,7 @@ export class DisplayComponent implements OnInit {
   
   // Corpus Christi Coordinates and map type/zoom
   mapCenter = [-97.396378, 27.800583];
-  basemapType = 'streets';
+  basemapType = 'streets-navigation-vector'; // May change if user chooses
   mapZoomLevel = 10;
 
   // Checks the status of the map
@@ -22,4 +22,23 @@ export class DisplayComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Changes the base map type to hybrid 
+  hybrid() {
+    this.basemapType = 'hybrid';
+  }
+
+  // Changes the base map type to streets navigation vector
+  SNV() {
+    this.basemapType = 'streets-navigation-vector';
+  }
+
+  // Changes the base map type to dark gray
+  darkGray() {
+    this.basemapType = 'dark-gray';
+  }
+
+  // Changes the base map type to terrain
+  terrain() {
+    this.basemapType = 'terrain';
+  }
 }
