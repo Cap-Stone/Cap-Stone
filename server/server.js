@@ -4,6 +4,14 @@ const path = require('path');
 const http = require('http');
 const app = express();
 
+const router = express.Router();
+const api = require('./routes/api');
+const cors = require('cors')
+
+
+app.unsubscribe(cors())
+
+
 // Add headers
 app.use(function (req, res, next) {
 
@@ -27,6 +35,7 @@ app.use(function (req, res, next) {
 
 // Parsers
 app.use(bodyParser.json());
+app.use('/api', api);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -44,3 +53,6 @@ app.set('port', port);
 const server = http.createServer(app);
 
 server.listen(port, () => console.log(`Running on localhost:${port}`));
+
+
+

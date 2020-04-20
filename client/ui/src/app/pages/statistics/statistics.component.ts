@@ -11,6 +11,8 @@ import * as CanvasJS from './canvasjs.min';
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss'],
 })
+
+
 export class StatisticsComponent implements OnInit {
 constructor() { }
 signData = []
