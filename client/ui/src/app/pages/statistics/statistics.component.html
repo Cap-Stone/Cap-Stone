@@ -1,1 +1,17 @@
 <p>statistics works!</p>
+<table>
+    <tr>
+        <td>S No.</td>
+        <td>X-Coord </td>
+        <td>Y-Coord </td>
+    </tr >
+    <tr *ngFor="let dataPoint of dataPoints; let myIndex = index; let evendataPoint = even;
+     let firstdataPoint = first; let lastdataPoint = last;
+     let odddataPoint = odd;"[ngClass]="{even: evendataPoint, odd: odddataPoint, first: firstdataPoint, last: lastdataPoint}">
+        <td>{{myIndex + 1}}</td>
+       <td>{{dataPoint.x}}</td> 
+       <td>{{dataPoint.y}}</td> 
+    </tr>
+</table>
+
+<a routerLink="/">Go Back!</a>

@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { DataServiceService } from './services/data-service.service';
 import { HttpClientModule } from '@angular/common/http'; 
 import {MatNativeDateModule} from '@angular/material/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // Angular material
@@ -22,9 +23,12 @@ import { AboutModule } from './pages/about/about.module';
 import { LoginModule } from './pages/login/login.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
+    
+    
   ],
   imports: [
     BrowserModule,
