@@ -17,16 +17,12 @@ import { MapModule } from './components/map/map.module';
 import { HomeModule } from './pages/home/home.module';
 import { StatisticsModule } from './pages/statistics/statistics.module';
 import { OnBoardingModule } from './pages/on-boarding/on-boarding.module';
-import { AboutModule } from './pages/about/about.module';
 import { LoginModule } from './pages/login/login.module';
-
-
+import { RegisterModule } from './pages/register/register.module';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    
-    
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +38,8 @@ import { LoginModule } from './pages/login/login.module';
     HomeModule,
     StatisticsModule,
     OnBoardingModule,
-    AboutModule,
-    LoginModule
+    LoginModule,
+    RegisterModule
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent]

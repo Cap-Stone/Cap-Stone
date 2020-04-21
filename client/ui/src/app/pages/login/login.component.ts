@@ -10,25 +10,34 @@ import { Router } from '@angular/router'
 export class LoginComponent implements OnInit {
 
   loginUserData ={}
-  constructor(private dataservice: DataServiceService, private _router: Router ) {
+  invalid = false;
 
-   }
+  constructor(
+    private dataservice: DataServiceService, 
+    private router: Router,
+  ) { }
 
   ngOnInit() {
-   
+    let currentUrl = this.router.url;
+    console.log('ROUTE: ', currentUrl);
   }
-  loginUser()
-  {
-    this.dataservice.loginUser(this.loginUserData)
-    .subscribe(
+
+  loginUser() {
+    this.dataservice.loginUser(this.loginUserData).subscribe(
       res => {
         localStorage.setItem('token', res.token)
-        this._router.navigate(['/home'])
+        this.router.navigate(['/home'])
       },
-      err => console.log(err)
+      err => {
+        this.invalid = true;
+        console.log(err)
+      }
     ) 
 
   }
 
+  goToRegisterPage() {
+    this.router.navigate(['/register']);
+  }
 
 }

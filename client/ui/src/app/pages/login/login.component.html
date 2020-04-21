@@ -1,3 +1,22 @@
+<!-- ToolBar -->
+<mat-toolbar color="primary">  
+  <mat-toolbar-row>
+    <span>BenchMark Family Service</span>
+    
+    <span class="fill-remaining-space"></span>
+
+    <button mat-button (click)=settings();>
+      <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Bench Mark Family Services Logo -->
+<div class="image">
+  <img src="../../../assets/Benchmark-Family-Services.jpg"/>
+</div>
+
+<!-- Login Card -->
 <mat-card id="card" style="text-align: center;">
   <mat-card-title>
     Log In
@@ -6,13 +25,14 @@
   <mat-card-content>
 
     <mat-form-field>
-      <input matInput placeholder="Email">
+      <input matInput placeholder="Email" autofocus="true" (keyup.enter)="loginUser()" [(ngModel)]="loginUserData.email" name="email" required>
     </mat-form-field><br />
 
     <mat-form-field>
-      <input matInput placeholder="Password">
+      <input matInput placeholder="Password" (keyup.enter)="loginUser()" type="password" [(ngModel)]="loginUserData.password" name="password" required>
     </mat-form-field><br />
-    <button mat-raised-button color="primary" style="margin-right:5px;">Login</button>
-    <button mat-raised-button color="primary" style="margin-right:5px;">Register</button>
+    <p *ngIf="invalid" style="color: red;">ERROR: Incorrect credentials</p>
+    <button mat-raised-button color="primary" (click)="loginUser()" style="margin-right:5px;">Login</button>
+    <button mat-raised-button color="primary" (click)="goToRegisterPage()" style="margin-right:5px;">Register</button>
   </mat-card-content>
 </mat-card>

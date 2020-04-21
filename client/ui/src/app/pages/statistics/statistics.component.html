@@ -1,8 +1,22 @@
-<p>stats works!</p>
+<!-- ToolBar -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button (click)=goBack();>
+      <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
+    </button>
+
+    <span class="fill-remaining-space"></span>
+
+    <button mat-button>
+        <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
+      </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<br>
 <label for="Months">Month:</label>
 <select (change)="onChange($event.target.value)">
-    <option value=0></option>
-    <option value=1>January</option>
-    <option value=2>February</option>
+  <option value=0></option>
+  <option value=1>January</option>
+  <option value=2>February</option>
 </select>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
