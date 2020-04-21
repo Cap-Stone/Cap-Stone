@@ -10,7 +10,7 @@ management, as well as general information about them with a comforting and
 nice user interface.
 
 To Start localhost:3000 run :
-node server.js
+node server/server.js
 
 Then in a different terminal window to run UI (http://localhost:4200/):
 ng serve --proxy-config proxy.conf.json
