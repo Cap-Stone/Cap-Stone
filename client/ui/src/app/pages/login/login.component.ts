@@ -22,6 +22,10 @@ export class LoginComponent implements OnInit {
     console.log('ROUTE: ', currentUrl);
   }
 
+  navigate() {
+    window.open("https://benchmarkfamilyservices.org/");
+  }
+
   loginUser() {
     this.dataservice.loginUser(this.loginUserData).subscribe(
       res => {
