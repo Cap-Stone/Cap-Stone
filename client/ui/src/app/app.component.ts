@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataServiceService } from './services/data-service.service';
-
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,13 @@ export class AppComponent {
 
   constructor(
     public dataservice: DataServiceService,
+    private router: Router,
   ) {}
+
+  ngOnInit() {
+    // let currentUrl = this.router.url;
+    // console.log('ROUTE: ', currentUrl);
+  }
 
   clicked() {
     this.dataservice.testServer().subscribe(
