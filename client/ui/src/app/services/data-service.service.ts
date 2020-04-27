@@ -12,7 +12,9 @@ export class DataServiceService {
 
   private _loginUrl = "http://localhost:3000/api/login"
   private _registerUrl = "http://localhost:3000/api/register";
-  
+  private _savePointsUrl = "http://localhost:3000/api/savePointsUrl";
+  private _getPointsUrl = "http://localhost:3000/api/getPointsUrl";
+
   constructor(
     private http: HttpClient,
   ) { }
@@ -23,11 +25,20 @@ export class DataServiceService {
 
   loginUser(user)
   {
-    return this.http.post<any>(this._loginUrl,user)
+    return this.http.post<any>(this._loginUrl, user)
   }
   
   registerUser(user) {
     return this.http.post<any>(this._registerUrl, user)
   }
+
+  savePoint(points) {
+    return this.http.post<any>(this._savePointsUrl, points)
+  }
+
+  getPoints() {
+    return this.http.get<any>(this._getPointsUrl)
+  }
+
   }
 

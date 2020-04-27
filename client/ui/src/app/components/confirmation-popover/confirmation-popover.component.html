@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+  <p>Place a point in this location?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">No Thanks</button>
+  <button mat-button cdkFocusInitial (click)="savePoint($event)">Confirm</button>
+</div>

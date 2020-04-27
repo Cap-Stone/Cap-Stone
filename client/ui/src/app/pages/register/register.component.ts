@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   registerUserData = {}
   constructor(
-    private _auth: DataServiceService,
+    private dataService: DataServiceService,
     private _router: Router,
     private _location: Location
   ) { }
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    this._auth.registerUser(this.registerUserData).subscribe(
+    this.dataService.registerUser(this.registerUserData).subscribe(
       res => {
         localStorage.setItem('token', res.token)
         this._router.navigate(['/login'])
