@@ -1,0 +1,39 @@
+<!-- ToolBar -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button (click)=goBack();>
+      <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
+    </button>
+
+    <span class="fill-remaining-space"></span>
+
+    <!-- <button mat-button (click)=settings();>
+      <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
+    </button> -->
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Bench Mark Family Services Logo -->
+<div class="image">
+  <img src="../../../assets/Benchmark-Family-Services.jpg" />
+</div>
+
+<mat-card id="card" style="text-align: center;">
+  <mat-card-title>
+    Register New User
+  </mat-card-title>
+
+  <mat-card-content>
+
+    <mat-form-field>
+      <input matInput placeholder="Email" (keyup.enter)="registerUser()" [(ngModel)]="registerUserData.email"
+        name="email" required>
+    </mat-form-field><br />
+
+    <mat-form-field>
+      <input matInput placeholder="Password" type="password" (keyup.enter)="registerUser()"
+        [(ngModel)]="registerUserData.password" name="password" required>
+    </mat-form-field><br />
+    <button mat-raised-button color="primary" (click)="registerUser()" style="margin-right:5px;">Register</button>
+  </mat-card-content>
+</mat-card>
