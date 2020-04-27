@@ -8,7 +8,7 @@ import { AngularMaterialModule } from 'src/app/angular-material/angular-material
 import { OnBoardingComponent } from '../on-boarding/on-boarding.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent], // delare HomeComponent
   imports: [
     CommonModule,
     AngularMaterialModule,
