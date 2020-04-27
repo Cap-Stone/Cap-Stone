@@ -1,0 +1,21 @@
+mat-card {
+  max-width: 500px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.image {
+  max-width: 500px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}

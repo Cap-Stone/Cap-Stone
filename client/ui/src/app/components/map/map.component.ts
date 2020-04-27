@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, Input, Output, EventEmitter, ElementRef } from "@angular/core";
 import { loadModules } from 'esri-loader';
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -19,9 +18,9 @@ export class MapComponent implements OnInit {
    * _basemap sets type of map
    * _loaded provides map loaded status
    */
-  private _zoom = 10;
-  private _center: Array<number> = [0.1278, 51.5074];
-  private _basemap = "streets";
+  private _zoom: any;
+  private _center: any;
+  private _basemap: any;
   private _loaded = false;
   private _view: any = null;
 
@@ -63,7 +62,7 @@ export class MapComponent implements OnInit {
       // Load the modules for the ArcGIS API for JavaScript
       const [EsriMap, EsriMapView] = await loadModules([
         "esri/Map",
-        "esri/views/MapView"
+        "esri/views/MapView",
       ]);
 
       // Configure the Map
@@ -103,6 +102,11 @@ export class MapComponent implements OnInit {
       this._loaded = this._view.ready;
       this.mapLoadedEvent.emit(true);
     });
+  }
+
+  // Recalls the initialeMap function to display new basemap
+  ngOnChanges() {
+    this.initializeMap();
   }
 
   ngOnDestroy() {

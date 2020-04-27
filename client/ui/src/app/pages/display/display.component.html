@@ -1,2 +1,35 @@
-<app-map  [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel" 
-(mapLoadedEvent)="mapLoadedEvent($event)"></app-map>
+<!-- ToolBar -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button (click)=goBack();>
+      <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
+    </button>
+
+    <span class="fill-remaining-space"></span>
+
+    <button mat-button>
+      <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-map [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel" (mapLoadedEvent)="mapLoadedEvent($event)">
+</app-map>
+<div>
+  <mat-grid-list cols="4" rowHeight="80px">
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" style="background: green;" (click)="hybrid();">Hybrid</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" (click)="SNV();">Streets-Navigation-Vector</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" style="background: gray;" (click)="darkGray();">Dark Grey</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button color="primary" style="background: lightblue;" (click)="terrain();">Terrain</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<!-- <button (click) = "callMyFunction()">HeyThere</button>  -->

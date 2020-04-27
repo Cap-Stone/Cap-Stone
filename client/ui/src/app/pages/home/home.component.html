@@ -1,1 +1,20 @@
+<!-- ToolBar -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button (click)="navigate()">BenchMark Family Service</button>
+
+    <span class="fill-remaining-space"></span>
+
+    <button mat-button style="margin-right: 1em;" routerLink="/display">Map</button>
+    <button mat-button style="margin-right: 1em;" routerLink="/stat">Statistics</button>
+    <button mat-button style="margin-right: 1em;" routerLink="/on-boarding">On-Boarding</button>
+
+    <button mat-button>
+      <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <p>home works!</p>
+<router-outlet></router-outlet>
