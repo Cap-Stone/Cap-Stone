@@ -215,15 +215,10 @@ export class MapComponent implements OnInit {
   getSavedPoints() {
     this.dataService.getPoints().subscribe(
       (response) => {
-
-        console.log('THIS IS THE RESPONSE: ', response);
         const arrayLength = response.length;
 
         // Make all saved points on map
         for(var count = 0; count < arrayLength; count++) {
-
-          console.log('THE X: ', response[count].x);
-          console.log('THE Y: ', response[count].y);
 
           // First create a point geometry
           var point = {
@@ -279,7 +274,7 @@ export class MapComponent implements OnInit {
       this._loaded = this._view.ready;
       this.mapLoadedEvent.emit(true);
 
-      this.getSavedPoints();
+      // this.getSavedPoints();
     });
   }
 
