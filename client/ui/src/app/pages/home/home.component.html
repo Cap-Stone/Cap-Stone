@@ -1,37 +1,42 @@
-<div class="container2">
-  <div class="project-title" >  <p font-size="100px">BenchMark Family Services</p></div>
-  
+
+<div class="image">
+  <img width="900px" src="../../../assets/Benchmark-Family-Services.jpg"/>
 </div>
+<div></div>
 <div class="container">
   <div class="items">
     <div class="icon-wrapper">
-      <img src="/client/ui/src/assets/display.png" alt="">
+    <img height="150px" width="150px" src="../../../assets/display.jpg" alt="">
     </div>
     <div class="project-name">
-      <p>Display</p>
+      <button class="items" mat-button  routerLink="/display">Display</button>
     </div>
   </div>
   <div class="items">
     <div class="icon-wrapper">
-      <img src="/client/ui/src/assets/stats.png" alt="">
+      <img height="150px" width="150px" src="../../../assets/stats.png" alt="">
     </div>
     <div class="project-name">
-      <p>Statistics</p>
+      <button class="items" mat-button routerLink="/stat">Statistics</button>
     </div>
   </div>
   <div class="items">
     <div class="icon-wrapper">
-      <img src="/client/ui/src/assets/On.png" alt="">
+      <img height="150px" width="150px" src="../../../assets/on.png" alt="">
     </div>
    
     <div class="project-name" >
      
-      <p>On Boarding</p>
+      <button class="items" mat-button routerLink="/on-boarding">On-Boarding</button>
     </div>
   </div>  
+
+
+
+
 </div>
 <!-- ToolBar -->
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-button (click)="navigate()">BenchMark Family Service</button>
 
@@ -46,7 +51,7 @@
     </button>
 
   </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar> -->
 
-<p>home works!</p>
+
 <router-outlet></router-outlet>

@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  width: 800px;
+  width: 1000px;
   height: 250px;
 
   
@@ -18,9 +18,9 @@ body {
   box-sizing: border-box;
   
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
   grid-template-rows: 1fr;
-  grid-gap: 15px;
+  grid-gap: 50px;
 }
 
 .items {
@@ -70,7 +70,11 @@ body {
   transition: all 0.5s;
 }
 
-
+.image {
+  width: 900px;
+  margin: 2em auto;
+  text-align: center;
+}
 
 .items:hover {
   border: 3px solid $sec;
