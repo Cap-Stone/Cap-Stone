@@ -1,16 +1,48 @@
 <!-- ToolBar -->
+<mat-card class="image">
+  <img width="900px" src="../../../assets/Benchmark-Family-Services.jpg"/>
+</mat-card>
+
+<!-- ToolBar -->
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-button (click)=goBack();>
-      <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
-    </button>
+    <button mat-button (click)="navigate()">BenchMark Family Service</button>
 
     <span class="fill-remaining-space"></span>
 
+    <button mat-button style="margin-right: 1em;" routerLink="/display">Display</button>
+    <button mat-button style="margin-right: 1em;" routerLink="/stat">Statistics</button>
+    <button mat-button style="margin-right: 1em;" routerLink="/on-boarding">On-Boarding</button>
+    <button mat-button style="margin-right: 1em;" routerLink="/login">Login</button>
+
     <button mat-button>
-        <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
-      </button>
+      <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
+    </button>
+
   </mat-toolbar-row>
 </mat-toolbar>
 
-<p>On-Boarding Works!</p>
+<mat-card class="body">
+  <mat-card class="card">
+    <p class="title">Display</p>
+    <p>This page will take the user to the map page so they can mark the advertisment locations.</p>
+  </mat-card>
+
+  <mat-card class="card">
+    <p class="title">Statistics</p>
+    <p>once the user selects a month from the drop down menu they will be shown a graph that displays the statistics of the diffrent advertisment locations.</p>
+  </mat-card>
+
+  <mat-card clas="card">
+    <p class="title">On-boarding</p>
+    <p>The user can find information to help navigate this application.</p>
+  </mat-card>
+
+
+  <mat-card class="card">
+    <p class="title">Login</p>
+    <p>Users can login to their accounts here or create an account.</p>
+  </mat-card>
+
+  
+</mat-card>
