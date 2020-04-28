@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { MatCardModule } from '@angular/material/card';
@@ -10,6 +10,7 @@ import {DisplayComponent} from '../display/display.component';
 import {RouterModule} from '@angular/router'
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 import { OnBoardingComponent } from '../on-boarding/on-boarding.component';
+import { LoginComponent } from '../login/login.component';
 
 @NgModule({
   declarations: [HomeComponent], // delare HomeComponent
@@ -34,6 +35,10 @@ import { OnBoardingComponent } from '../on-boarding/on-boarding.component';
       {
         path:'on-boarding',
         component: OnBoardingComponent
+      },
+      {
+        path:'login',
+        component: LoginComponent
       }
 
     ])
