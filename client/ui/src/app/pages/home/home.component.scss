@@ -10,6 +10,7 @@ body {
 .container {
   width: 1500px;
   height: 250px;
+  
 
   
   position: absolute;
@@ -55,6 +56,7 @@ body {
 
 .icon-wrapper {
   align-self: end;  
+  padding: 50px;
 }
 
 .project-name {
@@ -96,4 +98,23 @@ p{
     /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
+  }
+
+
+  .buttons{
+    padding: 20px;
+    font-size: 50px;
+    text-align: center;
+    color:black;
+  }
+
+  .buttons:hover{
+    
+  
+    & .project-name p {
+      transform: translateY(-10px);
+    }
+    & .icon-wrapper i {
+      transform: translateY(5px);
+    }
   }
