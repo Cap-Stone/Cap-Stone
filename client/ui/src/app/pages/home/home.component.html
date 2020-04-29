@@ -1,18 +1,18 @@
 
 <mat-card class="image">
-  <img width="900px" src="../../../assets/Benchmark-Family-Services.jpg"/>
+  <img width="500px" src="../../../assets/Benchmark-Family-Services.jpg"/>
 </mat-card>
-<div></div>
+
 <div class="container">
-  <mat-card>
+  <mat-card class="card">
     <div class="icon-wrapper">
-    <img height="150px" width="150px" src="../../../assets/display.jpg" alt="">
+    <img height="150px" width="150px" src="../../../assets/pin.png" alt="">
     </div>
     <div class="project-name">
       <button class="buttons" mat-button  routerLink="/display">Display</button>
     </div>
   </mat-card>
-  <mat-card>
+  <mat-card class="card">
     <div class="icon-wrapper">
       <img height="150px" width="150px" src="../../../assets/stats.png" alt="">
     </div>
@@ -20,7 +20,7 @@
       <button class="buttons" mat-button routerLink="/stat">Statistics</button>
     </div>
   </mat-card>
-  <mat-card>
+  <mat-card class="card">
     <div class="icon-wrapper">
       <img height="150px" width="150px" src="../../../assets/onbord.webp" alt="">
     </div>
@@ -30,13 +30,12 @@
       <button class="buttons" mat-button routerLink="/on-boarding">On-Boarding</button>
     </div>
   </mat-card>  
-
-  <mat-card>
+  <mat-card class="card">
     <div class="icon-wrapper">
     <img height="150px" width="150px" src="../../../assets/on.png" alt="">
     </div>
     <div class="project-name">
-      <button class="buttons" mat-button  routerLink="/login">login</button>
+      <button class="buttons" mat-button  routerLink="/login">Login</button>
     </div>
   </mat-card>
 
@@ -61,7 +60,10 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<div class="backg">
+  <img class="backg"src="../../../assets/kids.png" />
 
+</div>
 
 
 <router-outlet></router-outlet>
