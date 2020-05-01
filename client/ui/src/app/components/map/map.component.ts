@@ -1,10 +1,13 @@
-import { Component, OnInit, Inject, OnDestroy, ViewChild, Input, Output, EventEmitter, ElementRef } from "@angular/core";
+import { Component, OnInit, Inject, OnDestroy, ViewChild, Input, Output, EventEmitter, ElementRef, SimpleChange } from "@angular/core";
 import { loadModules } from 'esri-loader';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ConfirmationPopoverComponent } from '../confirmation-popover/confirmation-popover.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { DataServiceService } from '../../services/data-service.service';
 import { formatDate } from '@angular/common';
+import { PointPopoverComponent } from '../point-popover/point-popover.component';
+import * as _ from 'underscore';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface DialogData {
 }
@@ -28,9 +31,10 @@ export class MapComponent implements OnInit {
    */
   private _zoom: any;
   private _center: any;
-  private _basemap: any;
+  @Input() _basemap: any;
   private _loaded = false;
   private _view: any = null;
+  map: any;
 
   get mapLoaded(): boolean {
     return this._loaded;
@@ -52,15 +56,6 @@ export class MapComponent implements OnInit {
 
   get center(): Array<number> {
     return this._center;
-  }
-
-  @Input()
-  set basemap(basemap: string) {
-    this._basemap = basemap;
-  }
-
-  get basemap(): string {
-    return this._basemap;
   }
 
   constructor(
@@ -87,36 +82,43 @@ export class MapComponent implements OnInit {
   async initializeMap() {
     try {
       // Load the modules for the ArcGIS API for JavaScript
-      const [EsriMap, EsriMapView, EsriExpand, EsriPrint, Graphic] = await loadModules([
+      const [EsriMap, EsriMapView, EsriExpand, EsriPrint, Graphic, BasemapToggle] = await loadModules([
         "esri/Map",
         "esri/views/MapView",
         'esri/widgets/Expand',
         'esri/widgets/Print',
-        'esri/Graphic'
+        'esri/Graphic',
+        "esri/widgets/BasemapToggle",
       ]);
 
       this._Graphic = Graphic;
 
+      // console.log('LOOK: ', this._basemap);
       // Configure the Map
       const mapProperties: any = {
         basemap: this._basemap
       };
 
-      const map: any = new EsriMap(mapProperties);
+       this.map = new EsriMap(mapProperties);
 
       // Initialize the MapView
       const mapViewProperties: any = {
         container: this.mapViewEl.nativeElement,
         center: this._center,
         zoom: this._zoom,
-        map: map
+        map: this.map
       };
 
       this._view = new EsriMapView(mapViewProperties);
 
-      this._view.on("click", (event) => {
-        this.getCoord(event);
-      }); 
+      // allows for toggling to the 'hybrid' basemap
+      var toggle = new BasemapToggle({
+        view: this._view,
+        nextBasemap: "hybrid"
+      });
+
+      // Adding basemap toggle to map
+      this._view.ui.add(toggle, "top-right");
 
       // Add the graphics to the view's graphics layer
       this._view.ui.add(new EsriExpand({
@@ -131,8 +133,31 @@ export class MapComponent implements OnInit {
         }),
       }), 'top-left');
 
+      // Event for point click
+      this._view.on('pointer-down', (event) => {
+        console.log(event);
+
+        if (this._view.map.basemap.id === "hybrid" ) {
+          this.snackBarRef = this.snackBar.open('Unfortunately, points CANNOT be added when on the hybrid map but you can still EDIT points.', 'OK', {
+            duration: 10000,
+          })
+        }
+
+        this._view.hitTest(event).then((response) => {
+          const graphic = response.results[0].graphic;
+          console.log('RESPONSE: ', response);
+          // Has to have at least one graphic and has to exist in the graphics list
+          if (response.results.length > 0 && _.find(this._view.graphics.items, (item) => item.uid === graphic.uid)) {
+            this.snackBarRef.dismiss();
+            this.showPointPopover(graphic);
+          } else {
+            this.getCoord(response.results[0]);
+          }
+        });
+      });
+
       await this._view.when();
-      return this._view; 
+      return this._view;
     } catch (error) {
       console.log("EsriLoader: ", error);
     }
@@ -158,7 +183,7 @@ export class MapComponent implements OnInit {
       }
 
       if (event === "confirm") {
-        //Creating and Saving points graphic 
+        //Creating and Saving points graphic
         this.dataService.savePoint(this.pointsData).subscribe(
           res => {
             localStorage.setItem('token', res.token)
@@ -189,7 +214,7 @@ export class MapComponent implements OnInit {
 
             // Add the graphics to the view's graphics layer
             this._view.graphics.addMany([pointGraphic]);
-            
+
             this.snackBarRef = this.snackBar.open('Point successfully saved!', 'OK', {
               duration: 5000,
             })
@@ -200,7 +225,7 @@ export class MapComponent implements OnInit {
               duration: 5000,
             })
           }
-        )      
+        )
 
       } else {
         console.log('Point cancelled');
@@ -214,7 +239,8 @@ export class MapComponent implements OnInit {
 
   getSavedPoints() {
     this.dataService.getPoints().subscribe(
-      (response) => {
+      async (response) => {
+        console.log(response);
         const arrayLength = response.length;
 
         // Make all saved points on map
@@ -254,7 +280,8 @@ export class MapComponent implements OnInit {
           // Create a graphic and add the geometry and symbol to it
           this.pointGraphic[count] = new this._Graphic({
             geometry: point,
-            symbol: markerSymbol
+            symbol: markerSymbol,
+            attributes: response[count]
           });
 
           this._view.graphics.add(this.pointGraphic[count]);
@@ -263,23 +290,47 @@ export class MapComponent implements OnInit {
       (error) => {
         console.log('ERROR: ', error);
       }
-    )
+    );
   }
 
-  ngOnInit() {
-    // Initialize MapView and return an instance of MapView
-    this.initializeMap().then(mapView => {
-      // The map has been initialized
-      console.log("mapView ready: ", this._view.ready);
-      this._loaded = this._view.ready;
-      this.mapLoadedEvent.emit(true);
+  /**
+   * (Shows the popover for the map)
+   *
+   * @memberof MapComponent
+   */
+  showPointPopover(graphic: any): void {
+    this.dialogRef = this.dialog.open(PointPopoverComponent, {
+      width: '350px',
+      data: graphic
+    });
 
-      // this.getSavedPoints();
+    this.dialogRef.afterClosed().subscribe((event) => {
+      console.log('DISMISSED: ', event);
+      console.log(graphic);
+
+      if (event !== '') {
+        this.ngOnChanges(graphic);
+      }
     });
   }
 
+  ngOnInit() {
+    // console.log('LOOK: ', this._basemap);
+
+    // Initialize MapView and return an instance of MapView
+    // this.initializeMap().then(mapView => {
+    //   // The map has been initialized
+    //   console.log("mapView ready: ", this._view.ready);
+    //   this._loaded = this._view.ready;
+    //   this.mapLoadedEvent.emit(true);
+
+    //   // this.getSavedPoints();
+    // });
+  }
+
   // Recalls the initialeMap function to display new basemap
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChange) {
+    // console.log('CHANGES: ', changes);
     this.initializeMap().then(mapView => {
       // The map has been initialized
       console.log("mapView ready: ", this._view.ready);

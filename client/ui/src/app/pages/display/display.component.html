@@ -13,9 +13,9 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<app-map [center]="mapCenter" [basemap]="basemapType" [zoom]="mapZoomLevel" (mapLoadedEvent)="mapLoadedEvent($event)">
+<app-map [center]="mapCenter" [(_basemap)]="basemapType" [zoom]="mapZoomLevel" (mapLoadedEvent)="mapLoadedEvent($event)">
 </app-map>
-<div>
+<!-- <div>
   <mat-grid-list cols="4" rowHeight="80px">
     <mat-grid-tile>
       <button mat-raised-button color="primary" style="background: green;" (click)="hybrid();">Hybrid</button>
@@ -30,6 +30,4 @@
       <button mat-raised-button color="primary" style="background: lightblue;" (click)="terrain();">Terrain</button>
     </mat-grid-tile>
   </mat-grid-list>
-</div>
-
-<!-- <button (click) = "callMyFunction()">HeyThere</button>  -->
+</div> -->

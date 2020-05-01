@@ -90,4 +90,28 @@ router.get('/getPointsUrl', (req, res) => {
   })
 })
 
+router.post('/updatePointUrl', (req, res) => {
+  const point = req.body;
+  Points.updateOne({_id: point._id}, point, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      res.status(200).send(result);
+    }
+  });
+});
+
+router.post('/deletePoint', (req, res) => {
+  const point = req.body;
+  Points.deleteOne({_id: point._id}, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      res.status(200).send(result);
+    }
+  })
+});
+
 module.exports = router;
