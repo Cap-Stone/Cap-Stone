@@ -5,9 +5,9 @@
 
     <span class="fill-remaining-space"></span>
 
-    <button mat-button style="margin-right: 1em;" routerLink="/display">Map</button>
+    <!-- <button mat-button style="margin-right: 1em;" routerLink="/display">Map</button>
     <button mat-button style="margin-right: 1em;" routerLink="/stat">Statistics</button>
-    <button mat-button style="margin-right: 1em;" routerLink="/on-boarding">On-Boarding</button>
+    <button mat-button style="margin-right: 1em;" routerLink="/on-boarding">On-Boarding</button> -->
 
     <button mat-button>
       <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
@@ -16,5 +16,25 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<p>home works!</p>
+<mat-grid-list cols="4" rows="10" rowHeight="10%" style="background-color: rgb(241, 239, 239);">
+  <mat-grid-tile [colspan]="3" [rowspan]="10">
+    <iframe id="myFrame" width="100%" height="100%" frameBorder="5" style="border-color: rgb(0, 19, 128);" [src]="urlSafe"></iframe>
+  </mat-grid-tile>
+
+  <mat-grid-tile *ngIf="mobileDevice === false" [colspan]="1" [rowspan]="2">
+    <img src="../../../assets/Benchmark-Family-Services.jpg"/>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1">
+    <button mat-raised-button color="primary" style="height: 100%; width: 100%;" routerLink="/display">Map</button>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1">
+    <button mat-raised-button color="primary" style="height: 100%; width: 100%;" routerLink="/stat">Statistics</button>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="1">
+    <button mat-raised-button color="primary" style="height: 100%; width: 100%;" routerLink="/on-boarding">On-Boarding</button>
+  </mat-grid-tile>
+</mat-grid-list>
 <router-outlet></router-outlet>
