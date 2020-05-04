@@ -35,6 +35,7 @@ export class MapComponent implements OnInit {
   private _loaded = false;
   private _view: any = null;
   map: any;
+  hybridMapMessage = 0;
 
   get mapLoaded(): boolean {
     return this._loaded;
@@ -137,7 +138,8 @@ export class MapComponent implements OnInit {
       this._view.on('pointer-down', (event) => {
         console.log(event);
 
-        if (this._view.map.basemap.id === "hybrid" ) {
+        if (this._view.map.basemap.id === "hybrid" && this.hybridMapMessage  === 0 ) {
+          this.hybridMapMessage++;
           this.snackBarRef = this.snackBar.open('Unfortunately, points CANNOT be added when on the hybrid map but you can still EDIT points.', 'OK', {
             duration: 10000,
           })
