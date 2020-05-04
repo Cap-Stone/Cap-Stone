@@ -1,36 +1,50 @@
-<!-- ToolBar -->
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-button (click)=goBack();>
-      <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
-    </button>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" position="end" [(opened)]="opened">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <h3>Options</h3>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <button mat-raised-button style="margin-right: 10px; margin-left: 10px; margin-top: 10px;" color="accent"
+      routerLink="/login">LogOut</button>
+  </mat-sidenav>
 
-    <span class="fill-remaining-space"></span>
+  <mat-sidenav-content>
+    <!-- ToolBar -->
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-button (click)=goBack();>
+          <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
+        </button>
 
-    <button mat-button>
-        <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
-      </button>
-  </mat-toolbar-row>
-</mat-toolbar>
+        <span class="fill-remaining-space"></span>
 
-<br>
+        <button mat-button>
+          <mat-icon aria-hidden="false" (click)="sidenav.toggle()" aria-label="settings">settings</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
-<div>
-  <label for="Months">Month:</label>
-  <select (change)="onChange($event.target.value)">
-    <option value=0></option>
-    <option value=1>January</option>
-    <option value=2>February</option>
-    <option value=3>March</option>
-    <option value="4">April</option>
-    <option value="5">May</option>
-    <option value=6>June</option>
-    <option value=7>July</option>
-    <option value=8>August</option>
-    <option value=9>September</option>
-    <option value=10>October</option>
-    <option value=11>November</option>
-    <option value=12>December</option>
-  </select>
-</div>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <br>
+
+    <div>
+      <label for="Months">Month:</label>
+      <select (change)="onChange($event.target.value)">
+        <option value=0></option>
+        <option value=1>January</option>
+        <option value=2>February</option>
+        <option value=3>March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value=6>June</option>
+        <option value=7>July</option>
+        <option value=8>August</option>
+        <option value=9>September</option>
+        <option value=10>October</option>
+        <option value=11>November</option>
+        <option value=12>December</option>
+      </select>
+    </div>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

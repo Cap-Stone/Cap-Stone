@@ -1,42 +1,61 @@
-<!-- ToolBar -->
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-button (click)=goBack();>
-      <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
-    </button>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" position="end" [(opened)]="opened">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <h3>Options</h3>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <button mat-raised-button style="margin-right: 10px; margin-left: 10px; margin-top: 10px;" color="accent"
+      routerLink="/login">LogOut</button>
+  </mat-sidenav>
 
-    <span class="fill-remaining-space"></span>
+  <mat-sidenav-content>
+    <!-- ToolBar -->
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-button (click)=goBack();>
+          <mat-icon aria-hidden="false" aria-label="keyboard_backspace">keyboard_backspace</mat-icon>
+        </button>
 
-    <button mat-button>
-        <mat-icon aria-hidden="false" aria-label="settings">settings</mat-icon>
-      </button>
-  </mat-toolbar-row>
-</mat-toolbar>
-<header>
-  
-<h2 style="text-align:center">Instructions</h2>
-</header>
-<body style="text-align:center">
-  <h3>1. How to use map feature</h3>
-  <p>1.Navigate to Map on Menu Bar</p>
-  <p>2. Zoom in and out: <br>
-     If you use a computer, move your mouse to the area you want to zoom.Then rotate the mouse wheel to zoom in or zoom out to get the view you wish for.If you use a smart phone, use your two finger on the phonescreen to zoom in and out.<br><br><br>
-     3.Put a pin on the map: <br>
-     Click to the location you want to put a pin. A pop-up message will appear on the screen to confirm that you want to put the pin right there. Once you click confirm, a pin will be saved on the map.<br> 
-     For example, I want to put a pin between Ayers st and Gollihar rd.  
-  </p>
-  <img src="assets/MapView.jpg" alt="MapView" style="width:700px;height:600px;">
-  <p>Click on that location the press "Confirm"</p>
-  <img src="assets/Confirm.JPG" alt="Confirm" style="width:700px;height:600px;">
-  <p>Pin will be saved and displayed on the map view</p>
-  <img src="assets/Saved.JPG" alt="SavedPin" style="width:700px;height:600px;">
-  <br><br>
-  <h3>2. How to display statistic</h3>
-  <p>1.Navigate to Statistic on Menu Bar <br>
-     2.Choose the month on the dropdownlist to see potetial clients statistic. Once you click on the month option, statistic graph will be displayed.</p>
-     <img src="assets/stat.JPG" alt="Statistic" style="width:700px;height:600px;">
-    <p>3.On the top-right conner of the statistic graph, we offer a print option. Simply click on it and choose the option you want.</p>
-     <img src="assets/Print.JPG" alt="Print" style="width:700px;height:600px;"> 
-     <br><br>
-</body>
+        <span class="fill-remaining-space"></span>
 
+        <button mat-button>
+          <mat-icon aria-hidden="false" (click)="sidenav.toggle()" aria-label="settings">settings</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <header>
+      <h2 style="text-align:center">Instructions</h2>
+    </header>
+
+    <body style="text-align:center">
+      <h3>1. How to use map feature</h3>
+      <p>1.Navigate to Map on Menu Bar</p>
+      <p>2. Zoom in and out: <br>
+        If you use a computer, move your mouse to the area you want to zoom.Then rotate the mouse wheel to zoom in or
+        zoom out to get the view you wish for.If you use a smart phone, use your two finger on the phonescreen to zoom
+        in and out.<br><br><br>
+        3.Put a pin on the map: <br>
+        Click to the location you want to put a pin. A pop-up message will appear on the screen to confirm that you want
+        to put the pin right there. Once you click confirm, a pin will be saved on the map.<br>
+        For example, I want to put a pin between Ayers st and Gollihar rd.
+      </p>
+      <img src="assets/MapView.jpg" alt="MapView" style="width:700px;height:600px;">
+      <p>Click on that location the press "Confirm"</p>
+      <img src="assets/Confirm.JPG" alt="Confirm" style="width:700px;height:600px;">
+      <p>Pin will be saved and displayed on the map view</p>
+      <img src="assets/Saved.JPG" alt="SavedPin" style="width:700px;height:600px;">
+      <br><br>
+      <h3>2. How to display statistic</h3>
+      <p>1.Navigate to Statistic on Menu Bar <br>
+        2.Choose the month on the dropdownlist to see potetial clients statistic. Once you click on the month option,
+        statistic graph will be displayed.</p>
+      <img src="assets/stat.JPG" alt="Statistic" style="width:700px;height:600px;">
+      <p>3.On the top-right conner of the statistic graph, we offer a print option. Simply click on it and choose the
+        option you want.</p>
+      <img src="assets/Print.JPG" alt="Print" style="width:700px;height:600px;">
+      <br><br>
+    </body>
+  </mat-sidenav-content>
+</mat-sidenav-container>
