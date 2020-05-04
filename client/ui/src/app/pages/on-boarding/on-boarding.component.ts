@@ -13,6 +13,8 @@ export class OnBoardingComponent implements OnInit {
     private _location: Location
   ) { }
 
+  opened: boolean;
+
   ngOnInit() {
   }
 

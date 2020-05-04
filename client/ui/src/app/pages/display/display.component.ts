@@ -19,6 +19,7 @@ export class DisplayComponent implements OnInit {
   mapCenter = [-97.396378, 27.800583];
   basemapType = 'streets-navigation-vector'; // May change if user chooses
   mapZoomLevel = 10;
+  opened: boolean;
 
   // Checks the status of the map
   mapLoadedEvent(status: boolean) {

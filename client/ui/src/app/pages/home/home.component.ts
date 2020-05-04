@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   url: string = "https://benchmarkfamilyservices.org/";
   urlSafe: SafeResourceUrl;
   mobileDevice = false;
+  opened: boolean;
 
   ngOnInit() {
     this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);

@@ -24,6 +24,35 @@ export class StatisticsComponent implements OnInit {
     public dataService: DataServiceService,
   ) {}
 
+  opened: boolean;
+  signData = []
+  init = "0";
+  snackBarRef: any;
+  jan_Calls = 0;
+  jan = 0;
+  feb_Calls = 0;
+  feb = 0;
+  march_Calls = 0;
+  march = 0;
+  april_Calls = 0;
+  april = 0;
+  may_Calls = 0;
+  may = 0;
+  june_Calls = 0;
+  june = 0;
+  july_Calls = 0;
+  july = 0;
+  aug_Calls = 0;
+  aug = 0;
+  sep_Calls = 0;
+  sep = 0;
+  oct_Calls = 0;
+  oct = 0;
+  nov_Calls = 0;
+  nov = 0;
+  dec_Calls = 0;
+  dec = 0;
+
   ngOnInit() {
     this.onChange(this.init);
 
@@ -152,34 +181,6 @@ export class StatisticsComponent implements OnInit {
       }
     );
   }
-
-  signData = []
-  init = "0";
-  snackBarRef: any;
-  jan_Calls = 0;
-  jan = 0;
-  feb_Calls = 0;
-  feb = 0;
-  march_Calls = 0;
-  march = 0;
-  april_Calls = 0;
-  april = 0;
-  may_Calls = 0;
-  may = 0;
-  june_Calls = 0;
-  june = 0;
-  july_Calls = 0;
-  july = 0;
-  aug_Calls = 0;
-  aug = 0;
-  sep_Calls = 0;
-  sep = 0;
-  oct_Calls = 0;
-  oct = 0;
-  nov_Calls = 0;
-  nov = 0;
-  dec_Calls = 0;
-  dec = 0;
 
   onChange(deviceValue: any) {
     this.signData = []

@@ -6,6 +6,7 @@ import {DisplayComponent} from '../display/display.component';
 import {RouterModule} from '@angular/router'
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 import { OnBoardingComponent } from '../on-boarding/on-boarding.component';
+import { LoginComponent } from '../login/login.component';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -28,6 +29,10 @@ import { OnBoardingComponent } from '../on-boarding/on-boarding.component';
       {
         path:'on-boarding',
         component: OnBoardingComponent
+      },
+      {
+        path:'login',
+        component: LoginComponent
       }
 
     ])
