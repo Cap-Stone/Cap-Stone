@@ -6,6 +6,7 @@ import {RouterModule} from '@angular/router'
 import { HomeComponent } from '../home/home.component';
 // Angular Material 
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
+import { LoginComponent } from '../login/login.component';
 
 @NgModule({
   declarations: [StatisticsComponent],
@@ -14,17 +15,9 @@ import { AngularMaterialModule } from 'src/app/angular-material/angular-material
     AngularMaterialModule,
     RouterModule.forRoot([
       {
-        path: '',
-        component: HomeComponent
+        path: 'login',
+        component: LoginComponent
       },
-      {
-        path: 'display',
-        component: DisplayComponent
-      },
-      {
-        path:'stat',
-        component: StatisticsComponent
-      }
 
     ])
   ]

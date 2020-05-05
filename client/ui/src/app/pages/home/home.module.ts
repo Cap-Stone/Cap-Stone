@@ -6,6 +6,8 @@ import {DisplayComponent} from '../display/display.component';
 import {RouterModule} from '@angular/router'
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 import { OnBoardingComponent } from '../on-boarding/on-boarding.component';
+import { LoginComponent } from '../login/login.component';
+import { AuthGuardGuard } from 'src/app/auth-guard.guard';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -15,19 +17,27 @@ import { OnBoardingComponent } from '../on-boarding/on-boarding.component';
     RouterModule.forRoot([
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'display',
-        component: DisplayComponent
+        component: DisplayComponent,
+        canActivate: [AuthGuardGuard],
       },
       {
         path:'stat',
-        component: StatisticsComponent
+        component: StatisticsComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path:'on-boarding',
-        component: OnBoardingComponent
+        component: OnBoardingComponent,
+        canActivate: [AuthGuardGuard]
+      },
+      {
+        path:'login',
+        component: LoginComponent
       }
 
     ])

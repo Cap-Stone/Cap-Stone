@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Delete all elements?</h2>
+<mat-dialog-content>
+  <form [formGroup]="colorForm">
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="color">
+        <mat-option *ngFor="let color of colors" [value]="color.value">
+          {{color.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="deletePoint()">Delete</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button (click)="saveChanges()">Save Changes</button>
+</mat-dialog-actions>

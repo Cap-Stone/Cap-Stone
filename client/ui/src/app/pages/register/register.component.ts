@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from '../../services/data-service.service';
 import { Router } from '@angular/router'
 import {Location} from '@angular/common';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -12,19 +13,23 @@ export class RegisterComponent implements OnInit {
 
   registerUserData = {}
   constructor(
-    private _auth: DataServiceService,
+    private dataService: DataServiceService,
     private _router: Router,
-    private _location: Location
+    private _location: Location,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
   }
 
   registerUser() {
-    this._auth.registerUser(this.registerUserData).subscribe(
+    this.dataService.registerUser(this.registerUserData).subscribe(
       res => {
         localStorage.setItem('token', res.token)
-        this._router.navigate(['/login'])
+
+        this.snackBar.open('SUCCESS: New user added!', 'OK', {
+          duration: 5000,
+        })
       },
       err => console.log(err)
     )      
