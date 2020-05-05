@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.dataservice.loginUser(this.loginUserData).subscribe(
       res => {
+        console.log('RES: ', res);
         localStorage.setItem('token', res.token)
         this.router.navigate(['/home'])
       },

@@ -5,8 +5,22 @@
         <h3>Options</h3>
       </mat-toolbar-row>
     </mat-toolbar>
-    <button mat-raised-button style="margin-right: 10px; margin-left: 10px; margin-top: 10px;" color="accent"
-      routerLink="/login">LogOut</button>
+    <mat-grid-list cols="1" rows="4">
+      <mat-grid-tile [colspan]="1">
+        <button mat-raised-button color="accent" style="height: 100%; width: 100%;"
+          (click)="goToRegisterPage()">Register</button>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1">
+        <button mat-raised-button style="height: 100%; width: 100%;"
+          (click)="dataService.logOut();" color="accent">LogOut</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <!-- <button mat-raised-button color="accent" style="margin-right: 10px; margin-left: 10px; margin-top: 10px;"
+      (click)="goToRegisterPage()">Register</button>
+    <br>
+    <button mat-raised-button style="margin-right: 10px; margin-left: 10px; margin-top: 10px;"
+      (click)="dataService.logOut();" color="accent">LogOut</button> -->
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -30,23 +44,26 @@
 
     <mat-grid-list cols="4" rows="10" rowHeight="10%" style="background-color: rgb(241, 239, 239);">
       <mat-grid-tile [colspan]="3" [rowspan]="10">
-        <iframe id="myFrame" width="100%" height="100%" frameBorder="5" style="border-color: rgb(0, 19, 128);" [src]="urlSafe"></iframe>
+        <iframe id="myFrame" width="100%" height="100%" frameBorder="5" style="border-color: rgb(0, 19, 128);"
+          [src]="urlSafe"></iframe>
       </mat-grid-tile>
-    
+
       <mat-grid-tile *ngIf="mobileDevice === false" [colspan]="1" [rowspan]="2">
-        <img src="../../../assets/Benchmark-Family-Services.jpg"/>
+        <img src="../../../assets/Benchmark-Family-Services.jpg" />
       </mat-grid-tile>
-    
+
       <mat-grid-tile [colspan]="1">
         <button mat-raised-button color="primary" style="height: 100%; width: 100%;" routerLink="/display">Map</button>
       </mat-grid-tile>
-    
+
       <mat-grid-tile [colspan]="1">
-        <button mat-raised-button color="primary" style="height: 100%; width: 100%;" routerLink="/stat">Statistics</button>
+        <button mat-raised-button color="primary" style="height: 100%; width: 100%;"
+          routerLink="/stat">Statistics</button>
       </mat-grid-tile>
-    
+
       <mat-grid-tile [colspan]="1">
-        <button mat-raised-button color="primary" style="height: 100%; width: 100%;" routerLink="/on-boarding">On-Boarding</button>
+        <button mat-raised-button color="primary" style="height: 100%; width: 100%;"
+          routerLink="/on-boarding">On-Boarding</button>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-sidenav-content>

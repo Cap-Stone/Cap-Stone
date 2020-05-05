@@ -135,7 +135,7 @@ export class MapComponent implements OnInit {
       }), 'top-left');
 
       // Event for point click
-      this._view.on('pointer-down', (event) => {
+      this._view.on('pointer-up', (event) => {
         console.log(event);
 
         if (this._view.map.basemap.id === "hybrid" && this.hybridMapMessage  === 0 ) {

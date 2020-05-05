@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Location} from '@angular/common';
 import { MapComponent } from 'src/app/components/map/map.component';
+import { DataServiceService } from 'src/app/services/data-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display',
@@ -10,7 +12,9 @@ import { MapComponent } from 'src/app/components/map/map.component';
 export class DisplayComponent implements OnInit {
 
   constructor(
-    private _location: Location
+    private _location: Location,
+    public dataService: DataServiceService,
+    public router: Router,
   ) { }
 
   @ViewChild(MapComponent, {static: false}) map: MapComponent;
@@ -27,6 +31,10 @@ export class DisplayComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  goToRegisterPage() {
+    this.router.navigate(['/register']);
   }
 
   goBack() {

@@ -5,6 +5,7 @@ import * as CanvasJS from './canvasjs.min';
 import {Location} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { Router } from '@angular/router';
 
 // More information and documentation can be found at 
 // https://canvasjs.com/angular-charts/
@@ -22,6 +23,7 @@ export class StatisticsComponent implements OnInit {
     private _location: Location,
     public snackBar: MatSnackBar,
     public dataService: DataServiceService,
+    public router: Router,
   ) {}
 
   opened: boolean;
@@ -180,6 +182,10 @@ export class StatisticsComponent implements OnInit {
         console.log('ERROR: ', error);
       }
     );
+  }
+
+  goToRegisterPage() {
+    this.router.navigate(['/register']);
   }
 
   onChange(deviceValue: any) {
